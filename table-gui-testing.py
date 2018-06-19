@@ -1,23 +1,35 @@
-#import relevant modules
+# import relevant modules
 from tkinter import *
 import json
 
-#define Tk and the window, title and favicon.
+
+# define Tk and the window, title and favicon.
 master = Tk()
 master.geometry('300x300')
 master.title("tableTimes")
 master.iconbitmap("favicon.ico")
 
-#defines code for the 'add subject button'
+# define background
+mycolor = '#404040'
+master.configure(bg=mycolor)
+
+# defines code for the 'add subject button'
+
+
 def addsubject():
     subject = AddSubjectField.get()
     time = AddSubjectTimeField.get()
+    filename = 'subject_' + str(subject) + '.json'
+    with open(filename, 'w') as f_obj:
+        json.dump('[' + time + ']', f_obj)
 
 
 #content / buttons and GUI
-AddSubjectText = Label(master, text="Add a new subject")
+AddSubjectText = Label(master, text="Add a new subject",
+                       fg="white", bg="#404040")
 AddSubjectField = Entry(master)
-AddSubjectTimeText = Label(master, text="Add times ( DD/MM/YY HH:MM , DD/MM/YY HH:MM... )")
+AddSubjectTimeText = Label(
+    master, text="Add times ( DD/MM/YY HH:MM , DD/MM/YY HH:MM... )")
 AddSubjectTimeField = Entry(master)
 AddSubjectButton = Button(master, text="Confirm!", command=addsubject)
 
@@ -27,7 +39,7 @@ AddSubjectTimeText.pack()
 AddSubjectTimeField.pack()
 AddSubjectButton.pack()
 
-#loops and starts the GUI
+# loops and starts the GUI
 master.mainloop()
 
 subject = input("Enter name of subject here:")
