@@ -29,17 +29,14 @@ def closeLauncher():
 
 # content
 AddIntroText = Label(
-    master,
-    text="Welcome to tableTimes - Choose a choice below.",
-    fg="white",
-    bg="#404040")
+    master, text="Welcome to tableTimes - Choose a choice below.", fg="white", bg="#404040")
 AddButtonWriteJSON = Button(
     master, text="Add a subject", command=openwriteJSON)
 AddButtonReadJSONS = Button(
     master, text="What's my schedule?", command=openreadJSONS)
 AddButtonExitLauncher = Button(
     master, text="Exit tableTimes", command=closeLauncher)
-#pack contents of content
+# pack contents of content
 AddIntroText.pack()
 AddButtonWriteJSON.pack()
 AddButtonReadJSONS.pack()
