@@ -1,4 +1,5 @@
-# tableTimes
+# timetable
 
-master branch - No GUI / Text based
-School timetable program written in Python 3.6
+(Basic version / NO GUI - No priority for working on)
+
+This program is intended to work as a basic, JSON writing python program that can retrieve subject times and remind the user of classes. This is heavily work in progress
