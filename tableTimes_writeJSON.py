@@ -1,11 +1,11 @@
 # import relevant modules
 from tkinter import *
 import json
-
+import sys
 
 # define Tk and the window, title and favicon.
 master = Tk()
-master.geometry('300x300')
+master.geometry('325x150')
 master.title("tableTimes")
 master.iconbitmap("favicon.ico")
 
@@ -24,32 +24,30 @@ def addsubject():
         json.dump('[' + time + ']', f_obj)
 
 
+#define link to close program
+def exitWRITEJSON():
+    raise SystemExit
+
+
 #content / buttons and GUI
-AddSubjectText = Label(master, text="Add a new subject",
-                       fg="white", bg="#404040")
+AddSubjectText = Label(
+    master, text="Add a new subject", fg="white", bg="#404040")
 AddSubjectField = Entry(master)
 AddSubjectTimeText = Label(
-    master, text="Add times ( DD/MM/YY HH:MM , DD/MM/YY HH:MM... )")
+    master,
+    text="Add times ( DD/MM/YY HH:MM , DD/MM/YY HH:MM... )",
+    fg="white",
+    bg="#404040")
 AddSubjectTimeField = Entry(master)
 AddSubjectButton = Button(master, text="Confirm!", command=addsubject)
+AddExitButton = Button(master, text="Done adding!", command=exitWRITEJSON)
 
 AddSubjectText.pack()
 AddSubjectField.pack()
 AddSubjectTimeText.pack()
 AddSubjectTimeField.pack()
 AddSubjectButton.pack()
+AddExitButton.pack()
 
 # loops and starts the GUI
 master.mainloop()
-
-subject = input("Enter name of subject here:")
-filename = 'subject_' + str(subject) + '.json'
-with open(filename, 'w') as f_obj:
-    json.dump(subject, f_obj)
-
-print("Note: Requires format: DD/MM/YYYY (Y2K KEK) then HH:MM")
-times = input("Enter times you will attend the subject here:")
-filename = 'subject_' + str(subject) + '.json'
-with open(filename, 'w') as f_obj:
-    json.dump(subject, f_obj)
-print(times)
